@@ -1,0 +1,5 @@
+spring:
+  application:
+    name: prayerhouse-cicd-demo
+  profiles:
+    active: local
