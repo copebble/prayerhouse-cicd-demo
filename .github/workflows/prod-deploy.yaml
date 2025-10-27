@@ -1,4 +1,4 @@
-name: (PROD) app deployment event
+name: (PROD) app deployment
 
 on:
 #  push:
