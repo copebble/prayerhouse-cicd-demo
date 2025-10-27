@@ -1,2 +1,40 @@
-# CICD pipeline demo
+# Project CICD Pipeline Demo
 
+This repository is to demonstrate my project's CI/CD pipeline.  
+This is a simplified example; the real thing integrates with several pipelines.
+
+## CI/CD Flow
+
+<p align="center"><img width="712" height="650" alt="Image" src="https://github.com/user-attachments/assets/7febbd38-c0e4-4cd6-8d03-972489244126" /></p>
+
+Here’s how my project's CI/CD process **actually** runs:
+
+1. A push triggers the pipeline.
+2. It dispatches an event to the DB management repo.
+3. The DB repo validates the database DDL with Flyway.
+4. Once validation passes, it dispatches an event back to the project repo.
+5. The pipeline runs tests.
+6. It builds the project, creates a Docker image, and pushes it to ECR.
+7. It commits the new image tag to the Helm chart repo.
+8. Argo CD polls the chart repo and detects the change.
+9. Argo CD syncs to the new chart version.
+10. k8s runs rollout deployment.
+
+### Dispatch event
+
+```yaml
+steps:
+  #...
+  - name: Dispatch DB migration validate event
+    uses: peter-evans/repository-dispatch@v3
+    with:
+      token: ${{ secrets.REPO_TOKEN }}
+      repository: copebble/[TARGET_REPO_NAME]
+      event-type: [EVENT_TYPE_NAME]
+      client-payload: |
+        {
+          "deploy_tag": "${{ env.TAG_NAME }}",
+          #...
+        }
+  #...
+```
