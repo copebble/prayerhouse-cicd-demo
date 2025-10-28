@@ -22,7 +22,8 @@ Here’s how my project's CI/CD process **actually** runs:
 
 ## :pushpin: Github Actions
 
-- [github workflow example](https://github.com/copebble/prayerhouse-cicd-demo/blob/main/.github/workflows/deploy-example.yaml)
+- [github workflow example file](https://github.com/copebble/prayerhouse-cicd-demo/blob/main/.github/workflows/deploy-example.yaml)
+- [this repository's workflows](https://github.com/copebble/prayerhouse-cicd-demo/actions/workflows/deploy-example.yaml)
 
 ### Dispatch event
 
