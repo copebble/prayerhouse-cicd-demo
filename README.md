@@ -3,7 +3,7 @@
 This repository is to demonstrate my project's CI/CD pipeline.  
 This is a simplified example; the real thing integrates with several pipelines.
 
-## CI/CD Flow
+## :pushpin: CI/CD Flow
 
 <p align="center"><img width="712" height="650" alt="Image" src="https://github.com/user-attachments/assets/7febbd38-c0e4-4cd6-8d03-972489244126" /></p>
 
@@ -19,6 +19,8 @@ Here’s how my project's CI/CD process **actually** runs:
 8. Argo CD polls the chart repo and detects the change.
 9. Argo CD syncs to the new chart version.
 10. k8s runs rollout deployment.
+
+## :pushpin: Github Actions
 
 ### Dispatch event
 
