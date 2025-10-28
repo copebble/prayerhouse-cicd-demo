@@ -22,10 +22,11 @@ Here’s how my project's CI/CD process **actually** runs:
 
 ## :pushpin: Github Actions
 
-<p align="center"><img width="1001" height="385" alt="Image" src="https://github.com/user-attachments/assets/4d8a8ba9-1a13-4b94-95e1-4d0d9674e088" /></p>
-
 - [github workflow example file](https://github.com/copebble/prayerhouse-cicd-demo/blob/main/.github/workflows/deploy-example.yaml)
 - [this repository's workflows](https://github.com/copebble/prayerhouse-cicd-demo/actions/workflows/deploy-example.yaml)
+
+<p align="center"><img width="1001" height="385" alt="Image" src="https://github.com/user-attachments/assets/4d8a8ba9-1a13-4b94-95e1-4d0d9674e088" /></p>
+(The project's Github Actions workflow)
 
 ### Dispatch event
 
