@@ -47,7 +47,8 @@ tasks.withType<Test> {
 
 jib {
     from {
-        // docker image 확인할 때 support 가능 platform 확인해야 함
+        // you have to consider the platform when creating
+        // (according to OS version where the application is running)
         image = "eclipse-temurin:21-jre-ubi9-minimal"
         platforms {
             platform {

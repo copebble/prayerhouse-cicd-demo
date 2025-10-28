@@ -5,8 +5,6 @@ name: app deployment example
 
 on:
   push:
-    branches:
-      - main
     tags:
       - v20[0-9][0-9].*-APP
 
@@ -81,6 +79,7 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-gradle-
 
+      # https://hub.docker.com/r/hbleejoy/cicd-demo
       - name: Build Docker & Push to Registry
         env:
           REGISTRY: docker.io

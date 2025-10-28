@@ -22,17 +22,24 @@ Here’s how my project's CI/CD process **actually** runs:
 
 ## :pushpin: Github Actions
 
+- [github workflow example](https://github.com/copebble/prayerhouse-cicd-demo/blob/main/.github/workflows/deploy-example.yaml)
+
 ### Dispatch event
+
+```yaml
+uses: peter-evans/repository-dispatch@v4
+```
+- [repository-dispatch github](https://github.com/peter-evans/repository-dispatch)
 
 ```yaml
 steps:
   #...
   - name: Dispatch DB migration validate event
-    uses: peter-evans/repository-dispatch@v3
+    uses: peter-evans/repository-dispatch@v4
     with:
       token: ${{ secrets.REPO_TOKEN }}
       repository: copebble/[TARGET_REPO_NAME]
-      event-type: [EVENT_TYPE_NAME]
+      event-type: dispatch-event
       client-payload: |
         {
           "deploy_tag": "${{ env.TAG_NAME }}",
@@ -40,3 +47,17 @@ steps:
         }
   #...
 ```
+dispatch event to the target repository.
+
+```yaml
+# receiver
+on:
+  repository_dispatch:
+    types: [ dispatch-event ]
+
+env:
+  # the receiver can use the client-payload.
+  DEPLOY_TAG: "${{ github.event.client_payload.deploy_tag }}"
+```
+The receiver, which detects the dispatch event, trigger the workflow.  
+During the process, it can use the payloads which are sent from dispatcher workflow.
