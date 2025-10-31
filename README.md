@@ -15,7 +15,7 @@ Here’s how my project's CI/CD process **actually** runs:
 4. Once validation passes, it dispatches an event back to the project repo.
 5. The pipeline runs tests.
 6. It builds the project, creates a Docker image, and pushes it to ECR.
-7. It commits the new image tag to the Helm chart repo. ([chart repo link](https://github.com/copebble/app-chart-demo/tree/main))
+7. It commits the new image tag to the Helm chart repo. ([chart example repo link](https://github.com/copebble/app-chart-demo/tree/main))
 8. Argo CD polls the chart repo and detects the change.
 9. Argo CD syncs to the new chart version.
 10. k8s runs rollout deployment.
